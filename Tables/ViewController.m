@@ -13,6 +13,7 @@
 @end
 
 @implementation ViewController
+@synthesize CoordinateLabel = _CoordinateLabel;
 
 - (void)viewDidLoad
 {
@@ -26,4 +27,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)ScreenIsTapped:(UITapGestureRecognizer *)sender {
+    CGPoint gestureLocation = [sender locationInView:[self view]];
+    int xCoordinate = (int) gestureLocation.x;
+    int yCoordinate = (int) gestureLocation.y;
+    
+    [self.CoordinateLabel setText:[NSString stringWithFormat:@"TapLocation: (%i,%i)", xCoordinate, yCoordinate]];
+}
 @end
